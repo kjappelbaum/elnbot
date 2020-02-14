@@ -88,3 +88,5 @@ bot.set_webhook(
     "https://{}.glitch.me/{}".format(environ["PROJECT_NAME"], environ["TELEGRAM_TOKEN"])
 )
 
+if __name__ == "__main__":
+    bot.polling(none_stop=True)
