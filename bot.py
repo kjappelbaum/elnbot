@@ -16,7 +16,7 @@ This bot helps you using the ELN. For the start 🚀, I need your GASPAR name to
 """
 
 bot_commands = """
-<b> Commands:</b>
+*Commands:*
 - /random -> random picture (for testing and fun) 🎉
 - /search -> get some search results to some topic 🔍
 - /ui -> upload image of your MOF to the lab notebook, please use white background
@@ -40,7 +40,7 @@ def get_gaspar(message):
     GASPAR = message.text
     cid = message.chat.id
     bot.send_message(cid, "Thank you, these are the commands I know")
-    bot.send_message(cid, bot_commands)
+    bot.send_message(cid, bot_commands, parse_mode="markdown")
 
 
 # send random unsplash picture
