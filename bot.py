@@ -16,7 +16,7 @@ This bot helps you using the ELN. For the start 🚀, I need your GASPAR name to
 """
 
 bot_commands = """
-*Commands:*
+<b> Commands:</b>
 - /random -> random picture (for testing and fun) 🎉
 - /search -> get some search results to some topic 🔍
 - /ui -> upload image of your MOF to the lab notebook, please use white background
