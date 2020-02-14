@@ -16,7 +16,7 @@ This bot helps you using the ELN. For the start 🚀, I need your GASPAR name to
 """
 
 bot_commands = """
-Commands:
+*Commands:*
 - /random -> random picture (for testing and fun) 🎉
 - /search -> get some search results to some topic 🔍
 - /ui -> upload image of your MOF to the lab notebook, please use white background
@@ -87,7 +87,7 @@ bot.set_webhook(
 
 
 @bot.message_handler(content_types=["photo"])
-def handle(message):
+def handle_image(message):
     image_id = message.photo[-1].file_id
     cid = message.chat.id
     image_name = save_image_from_message(message)
@@ -140,11 +140,11 @@ def get_image_id_from_message(message):
 def handle_search(message):
     cid = message.chat.id
     msgQuery = bot.send_message(cid, "Select your image")
-    bot.register_next_step_handler(msgQuery, search)
+    bot.register_next_step_handler(msgQuery, handle_image)
 
 
 def cleanup_remove_image(image_name):
-    os.remove("{0}/{1}".format(result_storage_path, image_name))
+    os.remove("{0}/{1}".format(RESULT_STORAGE_PATH, image_name))
 
 
 if __name__ == "__main__":
