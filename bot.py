@@ -46,14 +46,6 @@ def send_random_pic(message):
     bot.send_photo(message.chat.id, response.content)
 
 
-def step_Set_Topics(message):
-    cid = message.chat.id
-    topics = message.text
-    response = requests.get("https://source.unsplash.com/random?{0}".format(topics))
-    bot.send_photo(message.chat.id, response.content)
-
-
-# send picture from topic
 @bot.message_handler(commands=["search"])
 def handle_search(message):
     cid = message.chat.id
