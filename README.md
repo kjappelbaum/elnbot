@@ -14,3 +14,9 @@ Environmental variables that need to be set:
 
 - `TELEGRAM_TOKEN`: Telegram token for the bot.
 - `IMAGE_STORAGE_PATH`: Path at which the samba share for image upload is mounted.
+
+## ToDo:
+
+- [ ] Add more functioanlities from the ELN API
+- [ ] Test with more concurrent requests
+- [ ] Permanently host on EPFL servers
