@@ -5,13 +5,14 @@ from __future__ import absolute_import
 import os
 import shutil
 import urllib
+from collections import defaultdict
 from functools import partial
 from pathlib import Path
 
 import requests
 import telebot
 
-GASPAR_DICT = {}
+GASPAR_DICT = defaultdict(lambda: None)
 
 # setup bot with Telegram token from .env
 bot = telebot.TeleBot(os.environ['TELEGRAM_TOKEN'])
@@ -44,8 +45,8 @@ def send_welcome(message):
 
 
 def get_gaspar(message):
-    global GASPAR
-    GASPAR_DICT[message.from_user.id] = GASPAR
+
+    GASPAR_DICT[message.from_user.id] = message.text
     cid = message.chat.id
     bot.send_message(cid, 'Thank you, these are the commands I know')
     bot.send_message(cid, bot_commands, parse_mode='markdown')
