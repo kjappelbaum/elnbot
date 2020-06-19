@@ -15,7 +15,11 @@ import telebot
 GASPAR_DICT = defaultdict(lambda: None)
 
 # setup bot with Telegram token from .env
-bot = telebot.TeleBot(os.environ['TELEGRAM_TOKEN'])
+try:
+    bot = telebot.TeleBot(os.environ['TELEGRAM_TOKEN'])
+except Exception:
+    raise Exception(
+        'You need to set the TELEGRAM_TOKEN environmental variable')
 
 bot_text = """
 Hello, how are you doing?
@@ -31,7 +35,8 @@ bot_commands = """
 - /eln -> open the ELN 💻
 """
 
-RESULT_STORAGE_PATH = '/Users/kevinmaikjablonka/Desktop/mnt_photos'
+IMAGE_STORAGE_PATH = os.environ('IMAGE_STORAGE_PATH',
+                                '/Users/kevinmaikjablonka/Desktop/mnt_photos')
 GASPAR = None  # should probably use some kind of session handling for this.
 
 
@@ -131,13 +136,13 @@ def save_image_from_message(message):
             os.environ['TELEGRAM_TOKEN'], file_path)
 
         # create folder to store pic temporary, if it doesnt exist
-        if not os.path.exists(RESULT_STORAGE_PATH):
-            os.makedirs(RESULT_STORAGE_PATH)
+        if not os.path.exists(IMAGE_STORAGE_PATH):
+            os.makedirs(IMAGE_STORAGE_PATH)
 
         # retrieve and save image
         image_name = path.name
         urllib.request.urlretrieve(
-            image_url, os.path.join(RESULT_STORAGE_PATH, image_name))
+            image_url, os.path.join(IMAGE_STORAGE_PATH, image_name))
 
         return image_name
     except Exception:
@@ -169,8 +174,8 @@ def handle_search_image(message):
 def cleanup_remove_image(image_name, filename):
     extension = Path(image_name).suffix
     shutil.move(
-        os.path.join(RESULT_STORAGE_PATH, image_name),
-        os.path.join(RESULT_STORAGE_PATH, filename + extension),
+        os.path.join(IMAGE_STORAGE_PATH, image_name),
+        os.path.join(IMAGE_STORAGE_PATH, filename + extension),
     )
 
 

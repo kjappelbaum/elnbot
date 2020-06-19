@@ -7,4 +7,10 @@ t.me/epfl_eln_bot
 
 ## How to run it
 
-For simple testing without upload on EPFL internal serves, one can host it on glitch. If the upload to the samba share for images is needed, it is important to have the corresponding share mounted in the filesystem.
+For simple testing without upload on EPFL internal servers, one can host it on [glitch](https://glitch.com/).
+If the upload to the samba share for images is needed, it is important to have the corresponding share mounted in the filesystem of the server which is running the bot.
+
+Environmental variables that need to be set:
+
+- `TELEGRAM_TOKEN`: Telegram token for the bot.
+- `IMAGE_STORAGE_PATH`: Path at which the samba share for image upload is mounted.
