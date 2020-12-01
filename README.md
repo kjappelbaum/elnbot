@@ -1,9 +1,15 @@
 # elnbot
 
-Me playing around with a telegram bot to conveniently add data to the [ELN](eln.epfl.ch) and also query some chemistry information.
-A fun application would be to couple it also with some online analysis (e.g. image recognition) or integrate it with lab automation.
+Prototype pf a telegram bot to conveniently add data to the [ELN](eln.epfl.ch).
+We plan to couple it also with some online analysis (e.g. image recognition) or integrate it with lab automation. The idea is to enable a workflow as shown below
 
-t.me/epfl_eln_bot
+<p style="text-align: center;">
+<img src="workflow.png" alt="drawing" width="400"/>
+</p>
+
+Details of this approach are described in our [preprint](https://chemrxiv.org/articles/preprint/A_Data-Driven_Perspective_on_the_Colours_of_Metal-Organic_Frameworks/13033217).
+
+The bot is deployed at t.me/epfl_eln_bot.
 
 ## How to run it
 
@@ -15,8 +21,4 @@ Environmental variables that need to be set:
 - `TELEGRAM_TOKEN`: Telegram token for the bot.
 - `IMAGE_STORAGE_PATH`: Path at which the samba share for image upload is mounted.
 
-## ToDo:
-
-- [ ] Add more functioanlities from the ELN API
-- [ ] Test with more concurrent requests
-- [ ] Permanently host on EPFL servers
+You can declare those in a `.env` file.
